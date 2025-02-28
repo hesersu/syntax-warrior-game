@@ -1,7 +1,11 @@
 // Audio
-let backgroundMusic = new Audio("./music/start-screen-bmg.mp3");
-backgroundMusic.volume = 0.4;
-backgroundMusic.play();
+let musicTimer;
+
+musicTimer = setTimeout(() => {
+  let backgroundMusic = new Audio("./music/start-screen-bmg.mp3");
+  backgroundMusic.volume = 0.4;
+  backgroundMusic.play();
+}, 500);
 
 // Elements
 
