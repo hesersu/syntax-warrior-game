@@ -1,12 +1,14 @@
 // Audio
 let backgroundMusic = new Audio("./music/start-screen-bmg.mp3");
+backgroundMusic.preload = "auto";
 let buttonSound = new Audio("./sounds/start-click.mp3");
+buttonSound.preload = "auto";
 
 setTimeout(() => {
   backgroundMusic.volume = 0.4;
   backgroundMusic.loop = true;
   backgroundMusic.play();
-}, 20);
+}, 3000);
 
 // Elements
 
