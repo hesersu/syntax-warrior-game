@@ -49,7 +49,68 @@ h2 {
   filter: drop-shadow(0px 0px 50px rgb(194, 0, 248));
 }
 
-#menuButton {
+#startButton {
+  width: 20%;
+  height: 7%;
+  border-radius: 5px;
+  margin: 4em;
+  font-family: "Press Start 2P", system-ui;
+  color: rgb(80, 5, 150);
+  filter: drop-shadow(0px 0px 3px rgb(99, 0, 106));
+}
+
+/* Game Screen */
+
+#game-screen-div {
+  display: none;
+  width: 1100px;
+  height: 619px;
+  background-image: url("./images/game-screen-bkg.jpeg");
+  background-size: cover;
+}
+
+#game-screen-sec {
+  width: 1100px;
+  height: 619px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(109, 106, 186, 0.102);
+  filter: drop-shadow(0px 0px 50px rgb(65, 65, 220));
+}
+
+#game-status-sec {
+  width: 1080px;
+  height: 100px;
+  background-color: rgba(0, 0, 0, 0.511);
+  position: relative;
+  top: 255px;
+  border-radius: 5px;
+}
+
+/* Game Over Screen */
+
+#gameover-screen-div {
+  display: none;
+  width: 1100px;
+  height: 619px;
+  background-image: url("./images/gameover-screen-bkg.jpeg");
+  background-size: cover;
+}
+
+#gameover-screen-sec {
+  width: 1100px;
+  height: 619px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(109, 106, 186, 0.102);
+  filter: drop-shadow(0px 0px 50px rgb(65, 65, 220));
+}
+
+#restartButton {
   width: 20%;
   height: 7%;
   border-radius: 5px;

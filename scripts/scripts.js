@@ -1,28 +1,40 @@
-// Audio
-let backgroundMusic = new Audio("./music/start-screen-bmg.mp3");
-backgroundMusic.preload = "auto";
-let buttonSound = new Audio("./sounds/start-click.mp3");
-buttonSound.preload = "auto";
+window.onload = function () {
+  //! All Elements Here
+  const startButtonElement = document.getElementById("startButton");
+  const restartButtonElement = document.getElementById("restartButton");
+  let newStartedGame;
 
-setTimeout(() => {
-  backgroundMusic.volume = 0.4;
-  backgroundMusic.loop = true;
-  backgroundMusic.play();
-}, 3000);
+  //! All Event Listeners Here
+  startButtonElement.addEventListener("click", function () {
+    startGame();
+  });
 
-// Elements
+  //! All Functions Here
+  function startGame() {
+    console.log("Start game!");
+    newStartedGame = new game();
+    newStartedGame.start();
+  }
+};
 
-const menuButtons = document.getElementById("menuButton");
+// Old Game
 
-// Functions
+// let buttonSound = new Audio("./sounds/start-click.mp3");
+// buttonSound.preload = "auto";
+// // Elements
 
-menuButtons.addEventListener("mouseover", () => {
-  menuButtons.style.filter = "drop-shadow(0px 0px 10px rgb(99, 0, 106))";
-  buttonSound.play();
-});
+// const menuButtons = document.getElementById("menuButton");
 
-menuButtons.addEventListener("mouseout", () => {
-  menuButtons.style.filter = "drop-shadow(0px 0px 3px rgb(99, 0, 106))";
-  buttonSound.pause();
-  buttonSound.currentTime = -5;
-});
+// // Functions
+
+// menuButtons.addEventListener("mouseover", () => {
+//   menuButtons.style.filter = "drop-shadow(0px 0px 10px rgb(99, 0, 106))";
+//   buttonSound.volume = 0.4;
+//   buttonSound.play();
+// });
+
+// menuButtons.addEventListener("mouseout", () => {
+//   menuButtons.style.filter = "drop-shadow(0px 0px 3px rgb(99, 0, 106))";
+//   buttonSound.pause();
+//   buttonSound.currentTime = -5;
+// });

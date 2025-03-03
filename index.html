@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Syntax Warrior: The Game</title>
-    <link rel="icon" type="image/x-icon" href="/images/favicon.png" />
+    <link rel="icon" type="image/x-icon" href="./images/favicon.png" />
     <link rel="stylesheet" href="./style.css" />
     <!-- Fonts -->
     <style>
@@ -17,11 +17,28 @@
       <section id="start-screen-sec">
         <h1>Syntax Warrior</h1>
         <h2>THE GAME</h2>
-        <button id="menuButton">Start Game</button>
+        <button id="startButton">Start Game</button>
       </section>
     </div>
 
+    <div id="game-screen-div">
+      <section id="game-screen-sec">
+      <div id="game-status-sec">
+      </section>
+    </div>
+        
+   <div id="gameover-screen-div">
+      <section id="gameover-screen-sec">
+        <h1>GAME OVER</h1>
+        <h2>FUBAR</h2>
+        <button id="restartButton">Restart</button>
+      </section>
+    </div>
+
+
+
     <!-- !!! This is for the scripts !!! -->
+    <script src="./scripts/game.js"></script>
     <script src="./scripts/scripts.js"></script>
   </body>
 </html>
