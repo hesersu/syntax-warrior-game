@@ -12,14 +12,17 @@ class game {
     this.level1audio = new Audio("./music/level-1-bmg.mp3");
     this.level1audio.loop = true;
     this.level1audio.volume = this.globalVolume;
+    this.gameOverAudio = new Audio("./music/game-over.mp3");
+    this.gameOverAudio.loop = true;
+    this.gameOverAudio.volume = this.globalVolume;
     // Player
 
     this.player = new player(
       this.gameScreen,
       500,
       500,
-      100,
-      100,
+      90,
+      90,
       "./images/player-img.png"
     );
 
@@ -107,7 +110,7 @@ class game {
         this.player.hurt.play();
         this.projectile.splice(i, 1);
         i--;
-        this.lives -= 5;
+        this.lives -= 20;
         this.playerHealthBar.style.width = `${this.lives}%`;
         //after we subtract health, we check if its zero
         if (this.lives === 0) {
@@ -129,5 +132,8 @@ class game {
     this.gameScreen.style.display = "none";
     //show the game over screen
     this.gameoverScreen.style.display = "flex";
+    this.level1audio.pause();
+    this.level1audio.currentTime = 0;
+    this.gameOverAudio.play();
   }
 }

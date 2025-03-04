@@ -1,8 +1,12 @@
-window.onload = function () {
+const gameMenuAudio = new Audio("./music/start-screen-bmg.mp3");
+
+this.window.onload = function () {
   //! All Elements Here
   const buttonSound = new Audio("./sounds/start-click.mp3");
   const startButtonElement = document.getElementById("startButton");
   const restartButtonElement = document.getElementById("restartButton");
+  const gameMenuAudio = new Audio(".music/start-screen-bmg.mp3");
+  gameMenuAudio.play();
   let newStartedGame;
 
   //! All Event Listeners Here
@@ -17,15 +21,18 @@ window.onload = function () {
     startButtonElement.style.filter =
       "drop-shadow(0px 0px 3px rgb(99, 0, 106))";
     buttonSound.pause();
-    buttonSound.currentTime = -5;
+    buttonSound.currentTime = 0;
   });
   startButtonElement.addEventListener("click", function () {
+    gameMenuAudio.pause();
     startGame();
   });
 
   // Restart button
 
   restartButtonElement.addEventListener("click", () => {
+    newStartedGame.gameOverAudio.pause();
+    newStartedGame.gameOverAudio.currentTime = 0;
     window.location.reload();
   });
 
