@@ -12,7 +12,6 @@
     </style>
   </head>
 
-  <body>
     <div id="start-screen-div">
       <section id="start-screen-sec">
         <h1>Syntax Warrior</h1>
@@ -24,6 +23,24 @@
     <div id="game-screen-div">
       <section id="game-screen-sec">
       <div id="game-status-sec">
+        <!-- Enemy Status -->
+        <div id="enemy-status">
+          <div id="enemy-portrait-box"></div>
+          <div id="enemy-status-box">
+            <div id="enemy-status-bar"></div>
+            <p id="enemy-status-text">HEALTH</p></div>
+        </div>
+        <!-- Player Status -->
+        <div id="player-status">
+          <div id="player-status-box">
+            <div id="player-status-bar"></div>
+            <p id="player-status-text">HEALTH</p></div>
+            <div id="player-portrait-box"></div>
+        </div>
+        <div>
+
+        </div>
+      </div>
       </section>
     </div>
         
@@ -38,6 +55,9 @@
 
 
     <!-- !!! This is for the scripts !!! -->
+    <script src="./scripts/projectile.js"></script>
+    <script src="./scripts/enemies.js"></script>
+    <script src="./scripts/player.js"></script>
     <script src="./scripts/game.js"></script>
     <script src="./scripts/scripts.js"></script>
   </body>
