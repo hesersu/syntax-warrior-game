@@ -23,6 +23,12 @@ window.onload = function () {
     startGame();
   });
 
+  // Restart button
+
+  restartButtonElement.addEventListener("click", () => {
+    window.location.reload();
+  });
+
   //! All Functions Here
   //* Start Game Function
   function startGame() {
