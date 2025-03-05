@@ -30,6 +30,7 @@ class player {
     this.element.style.top = `${positionTop}px`;
     // Audio
     this.hurt = new Audio("./sounds/player-hurt.wav");
+    this.getHealth = new Audio("./sounds/soda-open.wav");
     // This adds the element to the page
     this.gameScreen.appendChild(this.element);
   }

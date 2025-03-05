@@ -5,6 +5,8 @@ class game {
     this.gameScreen = document.getElementById("game-screen-div");
     this.gameoverScreen = document.getElementById("gameover-screen-div");
     this.playerHealthBar = document.getElementById("player-status-bar");
+    this.battleScreen = document.getElementById("battle-screen-sec");
+    this.battleCounterText = document.getElementById("battle-counter-text");
 
     // Audio
     //! Remember to set the volume before showing
@@ -32,6 +34,7 @@ class game {
     this.obstacles = [];
     this.enemy = [new enemy(this.gameScreen)];
     this.projectile = [new projectile(this.gameScreen)];
+    this.projectileGood = [new projectileGood(this.gameScreen)];
     this.score = 0;
     this.lives = 100;
     this.enemylives = 100;
@@ -39,6 +42,7 @@ class game {
     this.gameIntervalId;
     this.gameLoopFrequency = Math.round(1000 / 60); // 60fps
     this.counter = 0;
+    this.battleCounter = 0;
   }
 
   start() {
@@ -66,8 +70,12 @@ class game {
     // console.log("in the game loop");
     this.counter++;
     // console.log(this.counter);
-    if (this.counter % 40 === 0) {
+    if (this.counter % 60 === 0) {
       this.projectile.push(new projectile(this.gameScreen));
+    }
+
+    if (this.counter % 600 === 0) {
+      this.projectileGood.push(new projectileGood(this.gameScreen));
     }
 
     this.update();
@@ -81,7 +89,7 @@ class game {
   update() {
     // console.log("in the update");
     this.player.move();
-    // Projectile Logic
+    //* This is the Projectile Logic
     for (let i = 0; i < this.projectile.length; i++) {
       const currentProjectile = this.projectile[i];
       currentProjectile.move();
@@ -104,7 +112,6 @@ class game {
       }
       // Player Collision
       if (this.player.didCollide(currentProjectile)) {
-        //remove the red car from the array in JS
         currentProjectile.element.src = "./images/projectile-explosion.png";
         this.player.hurt.volume = this.globalVolume;
         this.player.hurt.play();
@@ -113,7 +120,7 @@ class game {
         this.lives -= 20;
         this.playerHealthBar.style.width = `${this.lives}%`;
         //after we subtract health, we check if its zero
-        if (this.lives === 0) {
+        if (this.lives <= 0) {
           this.gameIsOver = true;
         }
         setTimeout(() => {
@@ -123,7 +130,89 @@ class game {
         }, 100);
       }
     }
+    //*This is for the Good Projectile
+    for (let i = 0; i < this.projectileGood.length; i++) {
+      const currentProjectileGood = this.projectileGood[i];
+      currentProjectileGood.move();
+      //check if projectile hits wallds
+      if (
+        currentProjectileGood.top > 450 ||
+        currentProjectileGood.left > 1010 ||
+        currentProjectileGood.left < 10
+      ) {
+        currentProjectileGood.element.src = "./images/projectile-explosion.png";
+        currentProjectileGood.evilLaugh.volume = this.globalVolume;
+        currentProjectileGood.evilLaugh.play();
+        this.projectileGood.splice(i, 1);
+        i--;
+        console.log(this.score);
+        setTimeout(() => {
+          currentProjectileGood.element.remove();
+          console.log(this.lives);
+        }, 100);
+      }
+      //check if the obstacle is colliding with the player
+      if (this.player.didCollide(currentProjectileGood)) {
+        currentProjectileGood.element.src = "./images/projectile-explosion.png";
+        this.player.getHealth.volume = this.globalVolume;
+        this.player.getHealth.play();
+        this.projectileGood.splice(i, 1);
+        i--;
+        this.score += 1;
+        if (this.lives < 100) {
+          this.lives += 5;
+          this.playerHealthBar.style.width = `${this.lives}%`;
+        }
+        if (this.score === 3) {
+          this.score = 0;
+          this.bossBattle();
+        }
+        //dont forget to remove the img element from the html
+        setTimeout(() => {
+          currentProjectileGood.element.remove();
+          console.log(this.lives);
+        }, 100);
+      }
+    }
   }
+  //! Boss Battle Part
+  bossBattle() {
+    // This switches to the new screen and pauses game
+    clearInterval(this.battleCounter);
+    this.battleCounter = 10;
+    clearInterval(this.gameIntervalId);
+    this.gameScreen.style.display = "none";
+    this.battleScreen.style.display = "flex";
+    this.battleCounter = 1000;
+    setInterval(() => {
+      this.battleCounterText.innerText = this.battleCounter;
+      this.battleCounter -= 1;
+    }, 3);
+    setTimeout(() => {
+      if (this.battleCounter > 1200) {
+        this.enemylives -= 20;
+        console.log("Enemy lives" + this.enemylives);
+      } else if (this.battleCounter > 1000) {
+        this.enemylives -= 15;
+        console.log("Enemy lives" + this.enemylives);
+      } else if (this.battleCounter > 900) {
+        this.enemylives -= 10;
+        console.log("Enemy lives" + this.enemylives);
+      } else if (this.battleCounter > 700) {
+        this.enemylives -= 5;
+        console.log("Enemy lives" + this.enemylives);
+      } else if (this.battleCounter < 699) {
+        this.enemylives -= 0;
+        console.log("Enemy lives" + this.enemylives);
+      }
+      this.gameScreen.style.display = "flex";
+      this.battleScreen.style.display = "none";
+      this.gameIntervalId = setInterval(() => {
+        this.gameLoop();
+      }, this.gameLoopFrequency);
+    }, 5000);
+  }
+
   //! Game Over Part
   gameOver() {
     //stop the loop from running

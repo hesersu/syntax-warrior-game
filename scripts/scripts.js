@@ -54,6 +54,8 @@ this.window.onload = function () {
       newStartedGame.player.directionX = -15;
     } else if (event.code === "ArrowRight") {
       newStartedGame.player.directionX = 15;
+    } else if (event.code === event.code) {
+      newStartedGame.battleCounter += 10;
     }
   });
   window.addEventListener("keyup", (e) => {
@@ -61,6 +63,8 @@ this.window.onload = function () {
       newStartedGame.player.directionX = 0;
     } else if (e.code === "ArrowRight") {
       newStartedGame.player.directionX = 0;
+    } else if (e.code === e.code) {
+      newStartedGame.battleCounter += 0;
     }
   });
 };

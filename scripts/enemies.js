@@ -15,6 +15,7 @@ class enemy {
     this.element.style.filter =
       "drop-shadow(0px 150px 5px rgba(65, 65, 220, 0.4)";
     this.element.classList.add("enemy-class");
+    //Audio
     gameScreen.appendChild(this.element);
   }
 }
