@@ -71,11 +71,11 @@ class game {
     // console.log("in the game loop");
     this.counter++;
     // console.log(this.counter);
-    if (this.counter % 30 === 0) {
+    if (this.counter % 100 === 0) {
       this.projectile.push(new projectile(this.gameScreen));
     }
 
-    if (this.counter % 300 === 0) {
+    if (this.counter % 200 === 0) {
       this.projectileGood.push(new projectileGood(this.gameScreen));
     }
 
@@ -182,14 +182,14 @@ class game {
     clearInterval(this.gameIntervalId);
     this.gameScreen.style.display = "none";
     this.battleScreen.style.display = "flex";
-    this.battleCounter = 1000;
+    this.battleCounter = 701;
     // this does the countdown
     this.bossIntervalId = setInterval(() => {
       if (this.battleCounter > 1200) {
         this.battleCounterText.innerText = "1337 Hacker!";
       } else if (this.battleCounter > 1000) {
         this.battleCounterText.innerText = "Awesome Hacking!";
-      } else if (this.battleCounter > 800) {
+      } else if (this.battleCounter > 700) {
         this.battleCounterText.innerText = "Hack Faster!";
       } else if (this.battleCounter > 500) {
         this.battleCounterText.innerText = "Firewall is breaking down!";
