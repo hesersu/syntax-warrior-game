@@ -40,6 +40,7 @@ class game {
     this.enemylives = 100;
     this.gameIsOver = false;
     this.gameIntervalId;
+    this.bossIntervalId;
     this.gameLoopFrequency = Math.round(1000 / 60); // 60fps
     this.counter = 0;
     this.battleCounter = 0;
@@ -70,11 +71,11 @@ class game {
     // console.log("in the game loop");
     this.counter++;
     // console.log(this.counter);
-    if (this.counter % 60 === 0) {
+    if (this.counter % 30 === 0) {
       this.projectile.push(new projectile(this.gameScreen));
     }
 
-    if (this.counter % 600 === 0) {
+    if (this.counter % 300 === 0) {
       this.projectileGood.push(new projectileGood(this.gameScreen));
     }
 
@@ -178,27 +179,38 @@ class game {
   //! Boss Battle Part
   bossBattle() {
     // This switches to the new screen and pauses game
-    clearInterval(this.battleCounter);
-    this.battleCounter = 10;
     clearInterval(this.gameIntervalId);
     this.gameScreen.style.display = "none";
     this.battleScreen.style.display = "flex";
     this.battleCounter = 1000;
-    setInterval(() => {
-      this.battleCounterText.innerText = this.battleCounter;
-      this.battleCounter -= 1;
-    }, 3);
-    setTimeout(() => {
+    // this does the countdown
+    this.bossIntervalId = setInterval(() => {
       if (this.battleCounter > 1200) {
+        this.battleCounterText.innerText = "1337 Hacker!";
+      } else if (this.battleCounter > 1000) {
+        this.battleCounterText.innerText = "Awesome Hacking!";
+      } else if (this.battleCounter > 800) {
+        this.battleCounterText.innerText = "Hack Faster!";
+      } else if (this.battleCounter > 500) {
+        this.battleCounterText.innerText = "Firewall is breaking down!";
+      } else if (this.battleCounter < 500) {
+        this.battleCounterText.innerText =
+          "Which Bootcamp did you come from? Faster!";
+      }
+      this.battleCounter -= 1;
+    }, 7);
+    // this checks score, removes lives and switches back to game
+    setTimeout(() => {
+      if (this.battleCounter >= 1200) {
         this.enemylives -= 20;
         console.log("Enemy lives" + this.enemylives);
-      } else if (this.battleCounter > 1000) {
+      } else if (this.battleCounter >= 1000) {
         this.enemylives -= 15;
         console.log("Enemy lives" + this.enemylives);
-      } else if (this.battleCounter > 900) {
+      } else if (this.battleCounter >= 900) {
         this.enemylives -= 10;
         console.log("Enemy lives" + this.enemylives);
-      } else if (this.battleCounter > 700) {
+      } else if (this.battleCounter >= 700) {
         this.enemylives -= 5;
         console.log("Enemy lives" + this.enemylives);
       } else if (this.battleCounter < 699) {
@@ -207,10 +219,11 @@ class game {
       }
       this.gameScreen.style.display = "flex";
       this.battleScreen.style.display = "none";
+      clearInterval(this.bossIntervalId);
       this.gameIntervalId = setInterval(() => {
         this.gameLoop();
       }, this.gameLoopFrequency);
-    }, 5000);
+    }, 7000);
   }
 
   //! Game Over Part

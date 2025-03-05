@@ -220,6 +220,7 @@ h2 {
   height: 619px;
   background-image: url("./images/start-screen-bkg.jpeg");
   background-size: cover;
+  display: none;
 }
 
 #battle-screen-sec {

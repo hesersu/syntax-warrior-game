@@ -55,7 +55,7 @@ this.window.onload = function () {
     } else if (event.code === "ArrowRight") {
       newStartedGame.player.directionX = 15;
     } else if (event.code === event.code) {
-      newStartedGame.battleCounter += 10;
+      newStartedGame.battleCounter += 6;
     }
   });
   window.addEventListener("keyup", (e) => {
