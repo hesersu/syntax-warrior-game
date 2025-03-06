@@ -31,8 +31,12 @@ Syntax Warrior is an exciting and fast-paced game where players take on the role
 
 ## Screenshots
 
-<img src="./README/Screenshot1.jpeg" alt="Screenshot 1" width="350"/>
+<img src="./README/Screenshot1.jpeg" alt="Screenshot 1" width="650"/>
 &ensp;
-<img src="./README/Screenshot2.jpeg" alt="Screenshot 2" width="350"/>
+<p>Main Menu</p>
+<img src="./README/Screenshot2.jpeg" alt="Screenshot 2" width="650"/>
 &ensp;
-<img src="./README/Screenshot3.jpeg" alt="Screenshot 3" width="350"/>
+<p>Game Fight Screen</p>
+<img src="./README/Screenshot3.jpeg" alt="Screenshot 3" width="650"/>
+<p>Game Hacking Boss Battle Screen</p>
+&ensp;
