@@ -183,7 +183,7 @@ class game {
         i--;
         this.score += 1;
         if (this.lives < 100) {
-          this.lives += 5;
+          this.lives += 10;
           this.playerHealthBar.style.width = `${this.lives}%`;
         }
         if (this.score === 5) {
@@ -210,28 +210,39 @@ class game {
         this.battleCounterText.innerText = "Iron Hacker!";
         this.battleStatusBar.style.width = `98%`;
         this.battleStatusEnemy.style.animationDuration = "0.1s";
+      } else if (this.battleCounter > 900) {
+        this.battleStatusBar.style.width = `90%`;
       } else if (this.battleCounter > 800) {
         this.battleCounterText.innerText = "1337 Hacking!";
         this.battleStatusBar.style.width = `80%`;
         this.battleStatusEnemy.style.animationDuration = "0.3s";
+      } else if (this.battleCounter > 700) {
+        this.battleStatusBar.style.width = `70%`;
       } else if (this.battleCounter > 600) {
         this.battleCounterText.innerText = "Hack Faster!";
         this.battleStatusBar.style.width = `60%`;
         this.battleStatusEnemy.style.animationDuration = "0.5s";
+      } else if (this.battleCounter > 500) {
+        this.battleStatusBar.style.width = `50%`;
       } else if (this.battleCounter > 400) {
         this.battleCounterText.innerText = "Hackbot is cracking!";
         this.battleStatusBar.style.width = `40%`;
-        this.battleStatusEnemy.style.animationDuration = "0.8s";
+        this.battleStatusEnemy.style.animationDuration = "0.6s";
+      } else if (this.battleCounter > 300) {
+        this.battleStatusBar.style.width = `30%`;
       } else if (this.battleCounter > 200) {
         this.battleCounterText.innerText = "You make Hackbot laugh!";
         this.battleStatusBar.style.width = `20%`;
         this.battleStatusEnemy.style.animationDuration = "1s";
+      } else if (this.battleCounter > 100) {
+        this.battleStatusBar.style.width = `10%`;
       } else if (this.battleCounter < 100) {
         this.battleCounterText.innerText = "Are you AFK?!?!?!";
         this.battleStatusBar.style.width = `0%`;
         this.battleStatusEnemy.style.animationDuration = "2s";
       }
       this.battleCounter -= 1;
+      console.log(this.battleCounter);
     }, 8);
     // this checks score, removes lives and switches back to game
     const finishBossBattle = setTimeout(() => {

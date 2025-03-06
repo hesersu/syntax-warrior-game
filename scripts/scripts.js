@@ -64,7 +64,7 @@ this.window.onload = function () {
     } else if (event.code === "ArrowRight") {
       newStartedGame.player.directionX = 15;
     } else if (event.code === event.code) {
-      newStartedGame.battleCounter += 8;
+      newStartedGame.battleCounter += 9;
       keyboardClick.volume = 1;
       keyboardClick.play();
     }
