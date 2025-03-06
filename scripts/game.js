@@ -175,7 +175,8 @@ class game {
       }
       //check if the obstacle is colliding with the player
       if (this.player.didCollide(currentProjectileGood)) {
-        currentProjectileGood.element.src = "./images/projectile-explosion.png";
+        currentProjectileGood.element.src =
+          "./images/good-projectile-explosion.png";
         this.player.getHealth.volume = this.globalVolume;
         this.player.getHealth.play();
         this.projectileGood.splice(i, 1);
@@ -231,7 +232,7 @@ class game {
         this.battleStatusEnemy.style.animationDuration = "2s";
       }
       this.battleCounter -= 1;
-    }, 5);
+    }, 6);
     // this checks score, removes lives and switches back to game
     const finishBossBattle = setTimeout(() => {
       if (this.battleCounter <= 400) {

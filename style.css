@@ -118,9 +118,9 @@ h3 {
 #enemy-portrait-box {
   width: 80px;
   height: 80px;
-  background-image: url(./images/enemy-img.png);
+  background-image: url(./images/enemy-portrait-img.png);
   background-size: cover;
-  background-color: rgba(186, 18, 18, 0.405);
+  background-color: rgba(200, 92, 144, 0.405);
   border-color: black;
   border: 2px;
   border-radius: 5px;
@@ -130,7 +130,7 @@ h3 {
 #enemy-status-box {
   width: 370px;
   height: 80px;
-  background-color: rgba(186, 18, 18, 0.405);
+  background-color: rgba(200, 92, 144, 0.405);
   box-sizing: border-box;
   padding: 10px;
   display: flex;
@@ -142,7 +142,7 @@ h3 {
 #enemy-status-bar {
   width: 100%;
   height: 40%;
-  background-color: rgb(226, 45, 45);
+  background-color: rgb(197, 13, 102);
   margin: 0px;
   border-radius: 2px;
 }
@@ -183,9 +183,9 @@ h3 {
 #player-portrait-box {
   width: 80px;
   height: 80px;
-  background-image: url(./images/enemy-img.png);
+  background-image: url(./images/player-portrait-img.jpeg);
   background-size: cover;
-  background-color: rgba(0, 0, 255, 0.405);
+  background-color: rgba(100, 57, 130, 0.405);
   border-color: black;
   border: 2px;
   border-radius: 5px;
@@ -195,7 +195,7 @@ h3 {
 #player-status-box {
   width: 370px;
   height: 80px;
-  background-color: rgba(0, 0, 255, 0.405);
+  background-color: rgba(100, 57, 130, 0.405);
   box-sizing: border-box;
   padding: 10px;
   display: flex;
@@ -207,7 +207,7 @@ h3 {
 #player-status-bar {
   width: 100%;
   height: 40%;
-  background-color: rgb(207, 213, 42);
+  background-color: rgb(152, 54, 222);
   margin: 0px;
   border-radius: 2px;
 }

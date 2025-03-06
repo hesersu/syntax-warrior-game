@@ -1,4 +1,4 @@
-![Title](./README/Screenshot1.jpeg)
+![Title](./README/Title.jpeg)
 
 # keyboard-warrior-game
 
