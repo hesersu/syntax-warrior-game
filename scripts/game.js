@@ -219,7 +219,7 @@ class game {
         this.battleStatusBar.style.width = `60%`;
         this.battleStatusEnemy.style.animationDuration = "0.5s";
       } else if (this.battleCounter > 400) {
-        this.battleCounterText.innerText = "Hackbot's defenses are cracking!";
+        this.battleCounterText.innerText = "Hackbot is cracking!";
         this.battleStatusBar.style.width = `40%`;
         this.battleStatusEnemy.style.animationDuration = "0.8s";
       } else if (this.battleCounter > 200) {
