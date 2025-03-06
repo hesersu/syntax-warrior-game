@@ -6,6 +6,7 @@ this.window.onload = function () {
   const startButtonElement = document.getElementById("startButton");
   const restartButtonElement = document.getElementById("restartButton");
   const gameMenuAudio = new Audio(".music/start-screen-bmg.mp3");
+  const keyboardClick = new Audio("./sounds/keyboard-click.wav");
   gameMenuAudio.play();
   let newStartedGame;
 
@@ -56,6 +57,8 @@ this.window.onload = function () {
       newStartedGame.player.directionX = 15;
     } else if (event.code === event.code) {
       newStartedGame.battleCounter += 6;
+      keyboardClick.volume = 1;
+      keyboardClick.play();
     }
   });
   window.addEventListener("keyup", (e) => {
