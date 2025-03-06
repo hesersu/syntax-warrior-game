@@ -9,6 +9,8 @@ this.window.onload = function () {
   let newStartedGame;
 
   gameMenuAudio.play();
+  gameMenuAudio.volume = 0.4;
+  gameMenuAudio.loop = true;
 
   //! All Event Listeners Here
   startButtonElement.addEventListener("mouseover", () => {

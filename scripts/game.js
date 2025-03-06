@@ -203,7 +203,7 @@ class game {
     clearInterval(this.gameIntervalId);
     this.gameScreen.style.display = "none";
     this.battleScreen.style.display = "flex";
-    this.battleCounter = 600;
+    this.battleCounter = 0;
     // this does the countdown
     this.bossIntervalId = setInterval(() => {
       if (this.battleCounter > 1000) {
@@ -211,7 +211,7 @@ class game {
         this.battleStatusBar.style.width = `98%`;
         this.battleStatusEnemy.style.animationDuration = "0.1s";
       } else if (this.battleCounter > 800) {
-        this.battleCounterText.innerText = "Awesome Hacking!";
+        this.battleCounterText.innerText = "1337 Hacking!";
         this.battleStatusBar.style.width = `80%`;
         this.battleStatusEnemy.style.animationDuration = "0.3s";
       } else if (this.battleCounter > 600) {
@@ -219,7 +219,7 @@ class game {
         this.battleStatusBar.style.width = `60%`;
         this.battleStatusEnemy.style.animationDuration = "0.5s";
       } else if (this.battleCounter > 400) {
-        this.battleCounterText.innerText = "Firewall is breaking down!";
+        this.battleCounterText.innerText = "Hackbot's defenses are cracking!";
         this.battleStatusBar.style.width = `40%`;
         this.battleStatusEnemy.style.animationDuration = "0.8s";
       } else if (this.battleCounter > 200) {
@@ -232,17 +232,17 @@ class game {
         this.battleStatusEnemy.style.animationDuration = "2s";
       }
       this.battleCounter -= 1;
-    }, 6);
+    }, 8);
     // this checks score, removes lives and switches back to game
     const finishBossBattle = setTimeout(() => {
-      if (this.battleCounter <= 400) {
+      if (this.battleCounter <= 500) {
         this.enemylives -= 10;
-      } else if (this.battleCounter <= 600) {
+      } else if (this.battleCounter <= 700) {
         this.enemylives -= 20;
-      } else if (this.battleCounter <= 800) {
+      } else if (this.battleCounter <= 900) {
         this.enemylives -= 25;
         this.UnstopableAudio.play();
-      } else if (this.battleCounter <= 900) {
+      } else if (this.battleCounter <= 1000) {
         this.enemylives -= 30;
         this.DominatingAudio.play();
       } else if (this.battleCounter > 1000) {
