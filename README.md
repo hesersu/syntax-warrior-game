@@ -1,6 +1,6 @@
-# syntax-warrior-game
+![Title](./README/Screenshot1.jpeg)
 
-Game for the Ironhack Web Development Bootcamp Week 3
+# keyboard-warrior-game
 
 ## Game Description
 
@@ -23,14 +23,16 @@ Syntax Warrior is an exciting and fast-paced game where players take on the role
 
 ## Link to Repository
 
-[GitHub Repository](https://github.com/yourusername/syntax-warrior-game)
+[GitHub Repository](https://github.com/hesersu/syntax-warrior-game)
 
 ## Link to GitHub.io Page
 
-[Play Syntax Warrior Online](https://yourusername.github.io/syntax-warrior-game)
+[Play Syntax Warrior Online](https://hesersu.github.io/syntax-warrior-game)
 
 ## Screenshots
 
-![Screenshot 1](path/to/screenshot1.png)
-![Screenshot 2](path/to/screenshot2.png)
-![Screenshot 3](path/to/screenshot3.png)
+<img src="./README/Screenshot1.jpeg" alt="Screenshot 1" width="350"/>
+&ensp;
+<img src="./README/Screenshot2.jpeg" alt="Screenshot 2" width="350"/>
+&ensp;
+<img src="./README/Screenshot3.jpeg" alt="Screenshot 3" width="350"/>
