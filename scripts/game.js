@@ -4,6 +4,7 @@ class game {
     this.startScreen = document.getElementById("start-screen-div");
     this.gameScreen = document.getElementById("game-screen-div");
     this.gameoverScreen = document.getElementById("gameover-screen-div");
+    this.gamewinScreen = document.getElementById("gamewin-screen-div");
     this.playerHealthBar = document.getElementById("player-status-bar");
     this.enemyHealthBar = document.getElementById("enemy-status-bar");
     this.battleScreen = document.getElementById("battle-screen-sec");
@@ -20,6 +21,16 @@ class game {
     this.gameOverAudio = new Audio("./music/game-over.mp3");
     this.gameOverAudio.loop = true;
     this.gameOverAudio.volume = this.globalVolume;
+    this.gameWinAudio = new Audio("./music/game-win.mp3");
+    this.gameWinAudio.loop = true;
+    this.gameWinAudio.volume = this.globalVolume;
+    this.UnstopableAudio = new Audio("./sounds/Unstopable.mp3");
+    this.UnstopableAudio.volume = this.globalVolume * 2;
+    this.DominatingAudio = new Audio("./sounds/Dominating.mp3");
+    this.DominatingAudio.volume = this.globalVolume * 2;
+    this.HolyAudio = new Audio("./sounds/HolyShit.mp3");
+    this.HolyAudio.volume = this.globalVolume * 2;
+
     // Player
 
     this.player = new player(
@@ -42,6 +53,7 @@ class game {
     this.lives = 100;
     this.enemylives = 100;
     this.gameIsOver = false;
+    this.gameIsWon = false;
     this.gameIntervalId;
     this.bossIntervalId;
     this.gameLoopFrequency = Math.round(1000 / 60); // 60fps
@@ -87,6 +99,10 @@ class game {
     this.update();
 
     //inside the game loop we check if the game is over
+    if (this.gameIsWon) {
+      this.gameWin();
+    }
+
     if (this.gameIsOver) {
       this.gameOver();
     }
@@ -189,50 +205,59 @@ class game {
     this.battleCounter = 600;
     // this does the countdown
     this.bossIntervalId = setInterval(() => {
-      if (this.battleCounter > 1200) {
+      if (this.battleCounter > 1000) {
         this.battleCounterText.innerText = "Iron Hacker!";
         this.battleStatusBar.style.width = `98%`;
         this.battleStatusEnemy.style.animationDuration = "0.1s";
-      } else if (this.battleCounter > 1000) {
+      } else if (this.battleCounter > 800) {
         this.battleCounterText.innerText = "Awesome Hacking!";
         this.battleStatusBar.style.width = `80%`;
         this.battleStatusEnemy.style.animationDuration = "0.3s";
-      } else if (this.battleCounter > 800) {
+      } else if (this.battleCounter > 600) {
         this.battleCounterText.innerText = "Hack Faster!";
         this.battleStatusBar.style.width = `60%`;
         this.battleStatusEnemy.style.animationDuration = "0.5s";
-      } else if (this.battleCounter > 600) {
+      } else if (this.battleCounter > 400) {
         this.battleCounterText.innerText = "Firewall is breaking down!";
         this.battleStatusBar.style.width = `40%`;
         this.battleStatusEnemy.style.animationDuration = "0.8s";
-      } else if (this.battleCounter > 400) {
+      } else if (this.battleCounter > 200) {
         this.battleCounterText.innerText = "You make Hackbot laugh!";
         this.battleStatusBar.style.width = `20%`;
         this.battleStatusEnemy.style.animationDuration = "1s";
-      } else if (this.battleCounter < 200) {
+      } else if (this.battleCounter < 100) {
         this.battleCounterText.innerText = "Are you AFK?!?!?!";
         this.battleStatusBar.style.width = `0%`;
         this.battleStatusEnemy.style.animationDuration = "2s";
       }
       this.battleCounter -= 1;
-    }, 10);
+    }, 5);
     // this checks score, removes lives and switches back to game
     const finishBossBattle = setTimeout(() => {
       if (this.battleCounter <= 400) {
-        this.enemylives -= 0;
-      } else if (this.battleCounter <= 600) {
         this.enemylives -= 10;
-      } else if (this.battleCounter <= 800) {
-        this.enemylives -= 15;
-      } else if (this.battleCounter <= 1000) {
+      } else if (this.battleCounter <= 600) {
         this.enemylives -= 20;
-      } else if (this.battleCounter > 1000) {
+      } else if (this.battleCounter <= 800) {
+        this.enemylives -= 25;
+        this.UnstopableAudio.play();
+      } else if (this.battleCounter <= 900) {
         this.enemylives -= 30;
+        this.DominatingAudio.play();
+      } else if (this.battleCounter > 1000) {
+        this.enemylives -= 40;
+        this.HolyAudio.play();
+      }
+      // This checks if the game is won after remving lives
+      if (this.enemylives <= 0) {
+        this.gameIsWon = true;
       }
       console.log(this.enemylives);
+      console.log(this.gameIsWon);
+      // This increases game speed
       if (this.projectileGoodSpawnRate > 21 && this.projectileSpawnRate > 21) {
-        this.projectileSpawnRate = this.projectileSpawnRate -= 21;
-        this.projectileGoodSpawnRate = this.projectileGoodSpawnRate -= 21;
+        this.projectileSpawnRate = this.projectileSpawnRate / 2;
+        this.projectileGoodSpawnRate = this.projectileGoodSpawnRate;
       }
       this.gameScreen.style.display = "flex";
       this.battleScreen.style.display = "none";
@@ -242,6 +267,19 @@ class game {
         this.gameLoop();
       }, this.gameLoopFrequency);
     }, 7000);
+  }
+
+  //! Game Won Part
+  gameWin() {
+    //stop the loop from running
+    clearInterval(this.gameIntervalId);
+    //hide the game screen
+    this.gameScreen.style.display = "none";
+    //show the game over screen
+    this.gamewinScreen.style.display = "flex";
+    this.level1audio.pause();
+    this.level1audio.currentTime = 0;
+    this.gameWinAudio.play();
   }
 
   //! Game Over Part

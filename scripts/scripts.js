@@ -1,14 +1,14 @@
-const gameMenuAudio = new Audio("./music/start-screen-bmg.mp3");
-
 this.window.onload = function () {
   //! All Elements Here
   const buttonSound = new Audio("./sounds/start-click.mp3");
   const startButtonElement = document.getElementById("startButton");
-  const restartButtonElement = document.getElementById("restartButton");
-  const gameMenuAudio = new Audio(".music/start-screen-bmg.mp3");
+  const restartButtonElementLose = document.getElementById("restartButtonLose");
+  const restartButtonElementWin = document.getElementById("restartButtonWin");
+  const gameMenuAudio = new Audio("./music/start-screen-bmg.mp3");
   const keyboardClick = new Audio("./sounds/keyboard-click.wav");
-  gameMenuAudio.play();
   let newStartedGame;
+
+  gameMenuAudio.play();
 
   //! All Event Listeners Here
   startButtonElement.addEventListener("mouseover", () => {
@@ -31,7 +31,13 @@ this.window.onload = function () {
 
   // Restart button
 
-  restartButtonElement.addEventListener("click", () => {
+  restartButtonElementLose.addEventListener("click", () => {
+    newStartedGame.gameOverAudio.pause();
+    newStartedGame.gameOverAudio.currentTime = 0;
+    window.location.reload();
+  });
+
+  restartButtonElementWin.addEventListener("click", () => {
     newStartedGame.gameOverAudio.pause();
     newStartedGame.gameOverAudio.currentTime = 0;
     window.location.reload();
@@ -56,7 +62,7 @@ this.window.onload = function () {
     } else if (event.code === "ArrowRight") {
       newStartedGame.player.directionX = 15;
     } else if (event.code === event.code) {
-      newStartedGame.battleCounter += 6;
+      newStartedGame.battleCounter += 8;
       keyboardClick.volume = 1;
       keyboardClick.play();
     }
