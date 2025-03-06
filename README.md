@@ -38,7 +38,9 @@ The answer is in your fingertips!
 ## Link to Asset Sources
 
 [Bing AI Image Generator](https://www.bing.com/images/create)
+
 [Suno AI Music Generator](https://suno.com/)
+
 [Sample Focus Audio Samples](https://samplefocus.com/)
 
 ## Screenshots
