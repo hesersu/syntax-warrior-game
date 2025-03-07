@@ -33,7 +33,7 @@ The answer is in your fingertips!
 
 ## Link to GitHub.io Page
 
-[Play Syntax Warrior Online](https://hesersu.github.io/syntax-warrior-game)
+[Play Keyboard Warrior](https://hesersu.github.io/syntax-warrior-game)
 
 ## Link to Asset Sources
 
