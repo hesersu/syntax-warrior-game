@@ -237,7 +237,7 @@ class game {
       } else if (this.battleCounter > 100) {
         this.battleStatusBar.style.width = `10%`;
       } else if (this.battleCounter < 100) {
-        this.battleCounterText.innerText = "Are you AFK?!?!?!";
+        this.battleCounterText.innerText = "Quick! Start typing!";
         this.battleStatusBar.style.width = `0%`;
         this.battleStatusEnemy.style.animationDuration = "2s";
       }
