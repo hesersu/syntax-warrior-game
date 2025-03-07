@@ -36,11 +36,11 @@ class player {
   }
 
   move() {
-    // Update player's car position based on directionX and directionY
+    // Update player's position based on directionX and directionY
     this.left += this.directionX;
     this.top += this.directionY;
 
-    // Ensure the player's car stays within the game screen
+    // Ensure the player's stays within the game screen
     // handles left hand side
     if (this.left < 10) {
       this.left = 10;
@@ -61,7 +61,7 @@ class player {
       this.top = this.gameScreen.offsetHeight - this.height - 110;
     }
 
-    // Update the player's car position on the screen
+    // Update the player's psition on the screen
     this.updatePosition();
   }
 
